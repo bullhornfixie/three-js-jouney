@@ -4,6 +4,6 @@ This learning journey through [three.js journey](https://threejs-journey.xyz/) i
 
 Three.js is vast and enables you to build stunning 3D websites. The course starts by learning all the basics, such as creating a scene, adding objects, choosing the right materials, adding textures and animating everything. 
 
-Then, you are taken throgh many traditional skills such as creating your own geometries, adding lights and shadows, interacting with 3D objects and adding particles. 
+Then, you are taken through many traditional skills such as creating your own geometries, adding lights and shadows, interacting with 3D objects and adding particles. 
 
 
