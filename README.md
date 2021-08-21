@@ -6,4 +6,6 @@ Three.js is vast and enables you to build stunning 3D websites. The course start
 
 Then, you are taken through many traditional skills such as creating your own geometries, adding lights and shadows, interacting with 3D objects and adding particles. 
 
-
+## Resources
+- [Three.js in React](https://blog.bitsrc.io/starting-with-react-16-and-three-js-in-5-minutes-3079b8829817)
+- [Three.js in React](https://justinclanglinais.medium.com/using-three-js-to-make-a-3d-scene-in-react-js-e24178098eee)
