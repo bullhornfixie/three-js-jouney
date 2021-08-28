@@ -28,8 +28,14 @@ mesh.position.set(0.7, -0.6, 1)        // set the values of x, y, z axis at once
 // mesh.scale.x = 2
 // mesh.scale.y = 0.5
 // mesh.scale.z = 0.5
-mesh.scale.set(1, 1, 1)   // (1, 1, 1) is neutral setting 
+mesh.scale.set(2, 0.5, 0.5)   // (1, 1, 1) is neutral setting 
 
+// Rotation 
+mesh.rotation.y = 3.14159  // 3.14159 is PI 
+
+mesh.rotation.reorder('YXZ') 
+mesh.rotation.y = Math.PI * 0.25
+mesh.rotation.x = Math.PI * 0.25 
 
 // Axes Helper 
 const axesHelper = new THREE.AxesHelper(2) // add axes and change length 
@@ -45,6 +51,10 @@ const sizes = {
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
 camera.position.z = 3
 scene.add(camera)
+
+camera.lookAt(new THREE.Vector3(0, 0, 0)) // points camera at centre of scene by default it will be (0, 0, 0)
+camera.lookAt(new THREE.Vector3(3, 0, 0)) // points camera to right of scene 
+camera.lookAt(mesh.position) // now camera will look straight at cube 
 
 // Renderer 
 const canvas = document.querySelector('.webgl')
