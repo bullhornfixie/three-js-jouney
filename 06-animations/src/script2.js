@@ -1,5 +1,8 @@
 import './style.css'
 import * as THREE from 'three'
+import gsap from 'gsap'
+
+console.log(gsap)
 
 // Scene 
 const scene = new THREE.Scene()
@@ -25,4 +28,13 @@ scene.add(camera)
 const canvas = document.querySelector('.webgl')
 const renderer = new THREE.WebGLRenderer({ canvas: canvas })
 renderer.setSize(sizes.width, sizes.height)
-renderer.render(scene, camera)
+
+gsap.to(cube.position, { duration: 1, delay: 1, x: 2})
+// Not animating the cube but the cube position 
+
+const tick = () => {
+  renderer.render(scene, camera)
+  window.requestAnimationFrame(tick)
+}
+
+tick()
