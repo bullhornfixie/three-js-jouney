@@ -30,14 +30,27 @@ const renderer = new THREE.WebGLRenderer({ canvas: canvas })
 renderer.setSize(sizes.width, sizes.height)
 // resizes <canvas> element in DOM
 
+// Time 
+let time = Date.now()
+
 // Animations 
 const tick = () => {
 
+  // Time 
+  const currentTime = Date.now()
+  const deltaTime = currentTime - time 
+  time = currentTime 
+
+  console.log(deltaTime)
+
   // Update objects 
-  cube.position.x += 0.01
+  // cube.position.x += 0.01
   // each time the function is called 
   // cube position moves along x axes by 0.01 
   // give the effect of motion to the right 
+
+  // Update objects - spin 
+  cube.rotation.y += 0.002 * deltaTime
   
   // Render 
   renderer.render(scene, camera)
