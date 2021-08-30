@@ -1,6 +1,5 @@
 import './style.css'
 import * as THREE from 'three'
-import { Mesh } from 'three'
 
 // Scene 
 const scene = new THREE.Scene()
@@ -30,18 +29,15 @@ const renderer = new THREE.WebGLRenderer({ canvas: canvas })
 renderer.setSize(sizes.width, sizes.height)
 // resizes <canvas> element in DOM
 
-// Time 
-let time = Date.now()
+// Clock 
+const clock = new THREE.Clock()
 
 // Animations 
 const tick = () => {
 
-  // Time 
-  const currentTime = Date.now()
-  const deltaTime = currentTime - time 
-  time = currentTime 
-
-  console.log(deltaTime)
+  // Clock 
+  const elapsedTime = clock.getElapsedTime()
+  console.log(elapsedTime)
 
   // Update objects 
   // cube.position.x += 0.01
@@ -50,7 +46,13 @@ const tick = () => {
   // give the effect of motion to the right 
 
   // Update objects - spin 
-  cube.rotation.y += 0.002 * deltaTime
+  // cube.rotation.y += 0.002 
+
+  cube.rotation.y = elapsedTime
+  // using Elapsed time makes the motion speed independent of frame speed
+
+  // Update objects - up and down 
+  cube.position.y = Math.sin(elapsedTime)
   
   // Render 
   renderer.render(scene, camera)
