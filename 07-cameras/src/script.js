@@ -16,7 +16,7 @@ const cursor = {
 window.addEventListener('mousemove', (event) => 
 // when mouse moves log the co-ordinates of mouse on Y and X axes 
 {
-  cursor.x = event.clientX / sizes.width - 0.5
+  cursor.x = - (event.clientX / sizes.width - 0.5)
   cursor.y = event.clientY / sizes.width - 0.5
   // reduces range by dividing by width 
   // by adding - 0.5 the range either side of the cube goes from -0.5 to +0.5
@@ -56,7 +56,7 @@ const clock = new THREE.Clock()
 const tick = () => {
 
   // Update Camera 
-  camera.position.x = cursor.x
+  camera.position.x = cursor.x * 3
   camera.position.y = cursor.y * 3
 
   // Clock 
