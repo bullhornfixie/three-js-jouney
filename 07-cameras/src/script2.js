@@ -8,14 +8,13 @@ const scene = new THREE.Scene()
 
 // Create object 
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-
-const number = 1
-console.log(number)
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 
 const cube = new THREE.Mesh( geometry, material )
 cube.position.set( 0, 0, 0)
 scene.add( cube )
+
+cube.material.color.setHex(0x00ff00)
 
 // Scale 
 cube.scale.set(1, 1, 1)   
@@ -44,7 +43,7 @@ window.addEventListener('mousemove', (event) =>
   cursor.y = event.clientY / sizes.width - 0.5
   // reduces range by dividing by width 
   // by adding - 0.5 the range either side of the cube goes from -0.5 to +0.5
-  console.log(cursor.x)
+  // console.log(cursor.x)
 })
 
 // Renderer 
@@ -62,12 +61,16 @@ const tick = () => {
   // 1 revolution from -0.5 to 0.5 along x axes shows 4 faces of cube
   camera.lookAt(cube.position)
 
+  if (cursor.x < 0.5)   {cube.material.color.setHex(0xff0000) }
+  if (cursor.x < 0.26)  {cube.material.color.setHex(0x00ff00) }
+  if (cursor.x < 0.01)  {cube.material.color.setHex(0xffa500) }
+  if (cursor.x < -0.24) {cube.material.color.setHex(0xff00ff) }
+
+  // console.log(cursor.x)
+
   // Render 
   renderer.render(scene, camera)
   window.requestAnimationFrame(tick)
 }
 
 tick()
-
-
-
