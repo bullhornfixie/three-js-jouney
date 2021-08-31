@@ -10,6 +10,9 @@ const scene = new THREE.Scene()
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
 
+const number = 1
+console.log(number)
+
 const cube = new THREE.Mesh( geometry, material )
 cube.position.set( 0, 0, 0)
 scene.add( cube )
@@ -59,10 +62,12 @@ const tick = () => {
   // 1 revolution from -0.5 to 0.5 along x axes shows 4 faces of cube
   camera.lookAt(cube.position)
 
-
   // Render 
   renderer.render(scene, camera)
   window.requestAnimationFrame(tick)
 }
 
 tick()
+
+
+
