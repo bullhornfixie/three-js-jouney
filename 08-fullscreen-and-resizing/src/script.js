@@ -40,15 +40,37 @@ window.addEventListener('resize', () => {
 
 console.log('hello')
 
-window.addEventListener('dblclick', () => 
-{
-  if(!document.fullscreenElement) {
-    canvas.requestFullscreen()
-  }
-  else {
-    console.log('leave fullscreen')
-  }
+// window.addEventListener('dblclick', () => 
+// {
+//   if(!document.fullscreenElement) {
+//     canvas.requestFullscreen()
+//   }
+//   else {
+//     console.log('leave fullscreen')
+//   }
+// })
+
+// to work on chrome 
+
+window.addEventListener('dblclick', () => {
+  const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
+
+  if(!fullscreenElement) {
+    if(canvas.requestFullscreen){
+      canvas.requestFullscreen()
+    }
+    else if(canvas.webkitRequestFullscreen){
+      canvas.webkitRequestFullScreen()
+    }
+    else {
+     if(document.exitFullscreen) {
+       document.exitFullscreen()
+     }
+    }
+   }
 })
+
+// to work on safari and firefox
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 200) 
 // (FOV, aspect ratio, near plane, far plane)
