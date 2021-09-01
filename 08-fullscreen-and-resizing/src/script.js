@@ -38,6 +38,18 @@ window.addEventListener('resize', () => {
   // crisper finish by minimising pixel ratio to 1 for devices that have pixel ratio above 1
 })
 
+console.log('hello')
+
+window.addEventListener('dblclick', () => 
+{
+  if(!document.fullscreenElement) {
+    canvas.requestFullscreen()
+  }
+  else {
+    console.log('leave fullscreen')
+  }
+})
+
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 200) 
 // (FOV, aspect ratio, near plane, far plane)
 
