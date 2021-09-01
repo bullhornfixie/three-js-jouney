@@ -5,35 +5,19 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // Scene 
 const scene = new THREE.Scene()
 
-// Float32 array 
-// const positionArray = new Float32Array(9)
-// // Vertex1
-// positionsArray[0] = 0 // x
-// positionsArray[1] = 0 // y
-// positionsArray[2] = 0 // z
-
-// // Vertex2
-// positionsArray[3] = 0 // x
-// positionsArray[4] = 1 // y
-// positionsArray[5] = 0 // z
-
-
-// // Vertex3
-// positionsArray[6] = 0 // x
-// positionsArray[7] = 0 // y
-// positionsArray[8] = 0 // z
-
-const vertices = new Float32Array([ 
-  0, 0, 0, // Vertex1
-  0, 1, 0, // Vertex2
-  1, 0, 0  // Vertex3
-])
-
 const geometry = new THREE.BufferGeometry()
 
-const positionsAttribute = new THREE.BufferAttribute( vertices, 3 )
+const count = 50
+const positionsArray = new Float32Array(count * 3 * 3)
+// each triangle will have 3 verticies with 3 values 
+
+for(let i = 0; i < count * 3 * 3; i++)
+{ 
+  positionsArray[i] = (Math.random() - 0.5) * 3
+}
+
+const positionsAttribute = new THREE.BufferAttribute(positionsArray, 3)
 geometry.setAttribute('position', positionsAttribute)
-// 'position' is shaders 
 
 const material = new THREE.MeshBasicMaterial({ 
   color: 0x00ff00, 
