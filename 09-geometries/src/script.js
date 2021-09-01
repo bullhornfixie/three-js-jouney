@@ -6,22 +6,23 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 const scene = new THREE.Scene()
 
 // Create object 
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2)
+const material = new THREE.MeshBasicMaterial({ 
+  color: 0x00ff00, 
+  wireframe: true
+})
 
 const cube = new THREE.Mesh(geometry, material)
 cube.position.set(0, 0, 0)
 scene.add( cube )
 
-// Scale 
-cube.scale.set(1, 1, 1)   
-
-// Camera 
+// Sizes 
 const sizes = { 
-  width: window.innerWidth, // sets width to browser window
+  width: window.innerWidth,
   height: window.innerHeight
 }
 
+// Resize
 window.addEventListener('resize', () => {
 
   // Update sizes
@@ -35,46 +36,10 @@ window.addEventListener('resize', () => {
   // Update renderer 
   renderer.setSize(sizes.width, sizes.height)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-  // crisper finish by minimising pixel ratio to 1 for devices that have pixel ratio above 1
 })
 
-console.log('hello')
-
-// window.addEventListener('dblclick', () => 
-// {
-//   if(!document.fullscreenElement) {
-//     canvas.requestFullscreen()
-//   }
-//   else {
-//     console.log('leave fullscreen')
-//   }
-// })
-
-// to work on chrome 
-
-window.addEventListener('dblclick', () => {
-  const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
-
-  if(!fullscreenElement) {
-    if(canvas.requestFullscreen){
-      canvas.requestFullscreen()
-    }
-    else if(canvas.webkitRequestFullscreen){
-      canvas.webkitRequestFullScreen()
-    }
-    else {
-     if(document.exitFullscreen) {
-       document.exitFullscreen()
-     }
-    }
-   }
-})
-
-// to work on safari and firefox
-
+// Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 200) 
-// (FOV, aspect ratio, near plane, far plane)
-
 camera.position.x = 2
 camera.position.y = 2
 camera.position.z = 2
