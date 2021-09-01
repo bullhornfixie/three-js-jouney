@@ -17,7 +17,12 @@ scene.add( cube )
 cube.scale.set(1, 1, 1)   
 
 // Camera 
-const sizes = { width: 800, height: 800 }
+const sizes = { 
+  width: window.innerWidth, // sets width to browser window
+  height: window.innerHeight
+}
+
+console.log(window.innerWidth, window.innerHeight)
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 200) 
 // (FOV, aspect ratio, near plane, far plane)
