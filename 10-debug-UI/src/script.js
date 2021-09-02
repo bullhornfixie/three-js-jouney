@@ -58,7 +58,7 @@ const tick = () => {
 
   // Orbit Controls 
   const controls = new OrbitControls(camera, canvas)
-  controls.enableDamping = true
+  controls.enableDamping = false
   controls.update()
   
   // Render 
