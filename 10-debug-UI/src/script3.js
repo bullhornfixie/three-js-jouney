@@ -9,8 +9,15 @@ import * as dat from 'dat.gui'
 const gui = new dat.GUI()
 
 const parameters = {
-  color: 0xff0000
+  color: 0xff0000,
+  spin: () => {
+    console.log('spin')
+  }
 }
+
+// parameters is an object with various properties 
+// you can then pass this object to gui and access these properties 
+// gui.add(paramters, 'spin')
 
 console.log('hello')
 
@@ -47,6 +54,9 @@ gui
     console.log('tweak did not change color')
     console.log(material.color.set(parameters.color))
   })
+
+gui
+   .add(parameters, 'spin')
 
 // Sizes
 const sizes = { 
