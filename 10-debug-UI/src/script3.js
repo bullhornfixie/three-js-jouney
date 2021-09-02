@@ -9,7 +9,8 @@ import * as dat from 'dat.gui'
 const canvas = document.querySelector('.webgl')
 
 // Debug
-const gui = new dat.GUI()
+const gui = new dat.GUI({ closed: false, width: 400 })
+// press h * 2 on keyboard to hide panel
 
 const parameters = {
   color: 0xff0000,
