@@ -11,7 +11,9 @@ const gui = new dat.GUI()
 const parameters = {
   color: 0xff0000,
   spin: () => {
-    console.log('spin')
+    gsap.to(mesh.rotation, { duration: 1, y: 10})
+    // animate any property of an object 
+    // duration values are seconds
   }
 }
 
@@ -51,7 +53,6 @@ gui
   .addColor(parameters, 'color')
   .onChange(() => 
   {
-    console.log('tweak did not change color')
     console.log(material.color.set(parameters.color))
   })
 
