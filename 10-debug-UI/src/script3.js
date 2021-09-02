@@ -5,13 +5,16 @@ import gsap from 'gsap'
 import * as dat from 'dat.gui'
 
 
+// Canvas
+const canvas = document.querySelector('.webgl')
+
 // Debug
 const gui = new dat.GUI()
 
 const parameters = {
   color: 0xff0000,
   spin: () => {
-    gsap.to(mesh.rotation, { duration: 1, y: 10})
+    gsap.to(cube.rotation, { duration: 1, y: 10})
     // animate any property of an object 
     // duration values are seconds
   }
@@ -21,7 +24,6 @@ const parameters = {
 // you can then pass this object to gui and access these properties 
 // gui.add(paramters, 'spin')
 
-console.log('hello')
 
 // Scene 
 const scene = new THREE.Scene()
@@ -85,17 +87,18 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 camera.position.z = 3
 scene.add(camera)
 
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+
 // Renderer 
-const canvas = document.querySelector('.webgl')
 const renderer = new THREE.WebGLRenderer({ canvas: canvas })
 renderer.setSize(sizes.width, sizes.height)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-// Animations 
+// Animate
 const tick = () => {
 
   // Orbit Controls 
-  const controls = new OrbitControls(camera, canvas)
-  controls.enableDamping = false
   controls.update()
   
   // Render 
