@@ -19,12 +19,16 @@ const ambientOcclusionTexture = textureLoader.load('/textures/door/ambientOcclus
 const metalnessTexture = textureLoader.load('/textures/door/metalness.jpg')
 const roughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
 
+colorTexture.repeat.x = 2
+colorTexture.repeat.y = 3
+
 // Scene 
 const scene = new THREE.Scene()
 
 // Create object 
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ map: colorTexture })
+console.log(geometry.attributes.uv)
 const cube = new THREE.Mesh( geometry, material )
 cube.position.set(0, 0, 0)
 scene.add(cube)

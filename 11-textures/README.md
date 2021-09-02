@@ -4,6 +4,7 @@
 - Textures (especially metalness and the roughness) follow the PBR principles
 - Physically Based Rendering(PBR)
 - new THREE textureLoader.load()
+- UV wrapping
 
 # Resources 
 [Theory of PBR](https://marmoset.co/posts/basic-theory-of-physically-based-rendering/)
