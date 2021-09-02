@@ -5,10 +5,10 @@ import gsap from 'gsap'
 
 // Textures
 const image = new Image()
-image.onload = () => 
-{
-  const texture = new THREE.Texture(image)
-  console.log(texture)
+const texture = new THREE.Texture(image)
+
+image.onload = () => {
+  texture.needsUpdate = true
 }
 
 image.src = '/textures/door/color.jpg'
@@ -18,7 +18,7 @@ const scene = new THREE.Scene()
 
 // Create object 
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const material = new THREE.MeshBasicMaterial({ map: texture })
 const cube = new THREE.Mesh( geometry, material )
 cube.position.set(0, 0, 0)
 scene.add(cube)
