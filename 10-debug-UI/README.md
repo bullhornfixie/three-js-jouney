@@ -10,6 +10,7 @@ First, we need a debug UI.
 # Key Learning Points 
 - dat.GUI a lightweight graphical user interface for changing variables in JavaScript 
 - gsap is a high performance javascript animation library - animates any property of any object
+- create an object in native js `const parameters = {}`
 
 # Resources 
 - [dat.GUI](https://www.npmjs.com/package/dat.gui)

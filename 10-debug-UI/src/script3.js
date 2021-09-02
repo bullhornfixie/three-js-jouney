@@ -14,7 +14,7 @@ const gui = new dat.GUI()
 const parameters = {
   color: 0xff0000,
   spin: () => {
-    gsap.to(cube.rotation, { duration: 1, y: 10})
+    gsap.to(cube.rotation, { duration: 1, y: cube.rotation.y + 10})
     // animate any property of an object 
     // duration values are seconds
   }
