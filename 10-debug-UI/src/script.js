@@ -23,8 +23,22 @@ const sizes = {
 }
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
-camera.position.z = 3
+camera.position.x = 2
+camera.position.y = 2
+camera.position.z = 2
 scene.add(camera)
+
+// Cursor
+const cursor = {
+  x: 0,
+  y: 0
+}
+
+window.addEventListener('mousemove', (event) => 
+{
+  cursor.x = - (event.clientX / sizes.width - 0.5)
+  cursor.y = event.clientY / sizes.width - 0.5
+})
 
 // Renderer 
 const canvas = document.querySelector('.webgl')
@@ -33,6 +47,17 @@ renderer.setSize(sizes.width, sizes.height)
 
 // Animations 
 const tick = () => {
+
+  // Orbit Controls 
+  const controls = new OrbitControls(camera, canvas)
+  controls.enableDamping = true
+  controls.update()
+
+  // Update Camera 
+  camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
+  camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
+  camera.position.y = cursor.y * 5
+  camera.lookAt(cube.position)
   
   // Render 
   renderer.render(scene, camera)
