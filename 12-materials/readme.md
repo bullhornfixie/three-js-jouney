@@ -5,5 +5,4 @@
 - Since the 125th version of Three.js there is no need to include `buffer` in `PlaneBufferGeometry`
 - Now just `PlaneGeometry`
 
-
 ## Learning Resources 
