@@ -26,7 +26,8 @@ colorTexture.repeat.y = 3
 const scene = new THREE.Scene()
 
 // Create object 
-const geometry = new THREE.BoxGeometry(1, 1, 1)
+// const geometry = new THREE.BoxGeometry(1, 1, 1)
+const geometry = new THREE.TorusBufferGeometry(1, 0.35, 32, 100)
 const material = new THREE.MeshBasicMaterial({ map: colorTexture })
 console.log(geometry.attributes.uv)
 const cube = new THREE.Mesh( geometry, material )
