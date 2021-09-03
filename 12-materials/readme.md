@@ -8,6 +8,9 @@
 - Adding lights
 - Using differnt materials
 - `meshLambertMaterial` reacts to light
+- `new THREE.PlaneGeometry(1, 1, 100, 100)` // (width, height, subdivision, subdivision)
+- PointsMaterial to create particles
+- Environment maps + CubeTextureLoader
 
 ## Normals
 - Lighting 
