@@ -11,6 +11,7 @@
 - `new THREE.PlaneGeometry(1, 1, 100, 100)` // (width, height, subdivision, subdivision)
 - PointsMaterial to create particles
 - Environment maps + CubeTextureLoader
+- See link below for environment maps - HDRIHaven
 
 ## Normals
 - Lighting 
@@ -19,3 +20,4 @@
 
 ## Learning Resources 
 - [Audio Reactive Visuals](https://www.youtube.com/watch?v=p-o0gSN5gc4)
+- [HDRIHaven](https://polyhaven.com/)
