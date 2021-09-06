@@ -61,6 +61,17 @@ fontLoader.load(
     console.log(matcapTexture)
     const text = new THREE.Mesh(textGeometry, textMaterial)
     scene.add(text)
+
+    for(let i = 0; i < 100; i++)
+    // loop increments i until reaches 100 
+    {
+      const donutGeometry = new THREE.TorusBufferGeometry(0.3, 0.2, 20, 45)
+      const donutMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture })
+      const donut = new THREE.Mesh(donutGeometry, donutMaterial)
+      scene.add(donut)
+
+    }
+    // create donuts 
   }
 )
 
