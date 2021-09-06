@@ -2,11 +2,7 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
-import typefaceFont from 'three/examples/fonts/helvetiker_regular.typeface.json'
 
-/**
- * Base
- */
 // Debug
 const gui = new dat.GUI()
 
@@ -16,14 +12,21 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
-/**
- * Textures
- */
+
+// Textures
 const textureLoader = new THREE.TextureLoader()
 
-/**
- * Object
- */
+// Fonts
+const fontLoader = new THREE.FontLoader()
+fontLoader.load(
+  '/fonts/helvetiker_regular.typeface.json',
+  () =>
+  {
+    console.log("font loaded") 
+  }
+)
+
+// Object
 const cube = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial()

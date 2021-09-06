@@ -2,6 +2,7 @@
 
 ## Key Learning Points 
 - Facetype.js 
+- `THREE.TextureLoader`
 - `TextGeometry`
 
 
