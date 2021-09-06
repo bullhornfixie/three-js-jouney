@@ -15,7 +15,7 @@ const scene = new THREE.Scene()
 
 // Textures
 const textureLoader = new THREE.TextureLoader()
-const matcapTexture = textureLoader.load('/textures/matcaps/5.png')
+const matcapTexture = textureLoader.load('/textures/matcaps/8.png')
 console.log(matcapTexture)
 
 // Axes 
@@ -62,16 +62,36 @@ fontLoader.load(
     const text = new THREE.Mesh(textGeometry, textMaterial)
     scene.add(text)
 
+    // Optimisation
+    console.time('donuts')
+
+    const donutGeometry = new THREE.TorusBufferGeometry(0.3, 0.2, 20, 45)
+    const donutMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture })
+    // keeping the donut material and geometry outside loops optimises performance 
+    // other wise you are creating new material and geometry on each loop
+
     for(let i = 0; i < 100; i++)
     // loop increments i until reaches 100 
+    // creates 100 donuts
     {
-      const donutGeometry = new THREE.TorusBufferGeometry(0.3, 0.2, 20, 45)
-      const donutMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture })
       const donut = new THREE.Mesh(donutGeometry, donutMaterial)
+
+      donut.position.x = (Math.random() -0.5) * 10 
+      donut.position.y = (Math.random() -0.5) * 10 
+      donut.position.z = (Math.random() -0.5) * 10 
+      // random donut positioning 
+
+      donut.rotation.x = Math.random() * Math.PI
+      donut.rotation.Y = Math.random() * Math.PI
+
+      const scale = Math.random()
+      donut.scale.set(scale, scale, scale)
+      
       scene.add(donut)
 
     }
-    // create donuts 
+    console.timeEnd('donuts')
+    // time it takes to create donuts
   }
 )
 

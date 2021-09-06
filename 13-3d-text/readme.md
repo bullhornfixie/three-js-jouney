@@ -8,5 +8,6 @@
 - Bounding
 - `textGeometry.center`
 - `MeshMatcapMaterial`
+- We can use the same material and mesh on multiple Meshes
 
 ## Resources
