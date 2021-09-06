@@ -15,6 +15,12 @@ const scene = new THREE.Scene()
 
 // Textures
 const textureLoader = new THREE.TextureLoader()
+const matcapTexture = textureLoader.load('/textures/matcaps/5.png')
+console.log(matcapTexture)
+
+// Axes 
+// const axesHelper = new THREE.AxesHelper()
+// scene.add(axesHelper)
 
 // Fonts
 const fontLoader = new THREE.FontLoader()
@@ -28,27 +34,35 @@ fontLoader.load(
         font: font,
         size: 0.5,
         height: 0.2, 
-        curveSegments: 12, 
+        curveSegments: 5, 
         bevelEnabled: true,
         bevelThickness: 0.03,
         bevelSize: 0.02, 
         bevelOffset: 0,
-        bevelSegments: 5
+        bevelSegments: 4
       }
     ) 
-    const textMaterial = new THREE.MeshBasicMaterial()
+    // textGeometry.computeBoundingBox()
+    // console.log(textGeometry.boundingBox)
+    // // the minX value should be 0.00 for the center of scene
+
+    // textGeometry.translate(
+    //   - (textGeometry.boundingBox.max.x - 0.02) * 0.5,
+    //   - (textGeometry.boundingBox.max.y - 0.02) * 0.5,
+    //   - (textGeometry.boundingBox.max.z - 0.03) * 0.5,
+    // )
+    // geometry is centered
+
+    textGeometry.center()
+    // fast method of the above approach
+
+    const textMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture })
+    // need to use MeshMatcapMaterial to use matcap: 
+    console.log(matcapTexture)
     const text = new THREE.Mesh(textGeometry, textMaterial)
     scene.add(text)
   }
 )
-
-// Object
-const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial()
-)
-
-scene.add(cube)
 
 // Sizes
 const sizes = {
